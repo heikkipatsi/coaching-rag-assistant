@@ -1,0 +1,50 @@
+﻿# Secrets - never commit
+.env
+.env.*
+!.env.example
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.next/
+.vite/
+
+# RAG: large or regenerable artifacts
+data/raw/
+data/processed/
+*.faiss
+*.index
+chroma/
+chroma_db/
+vectorstore/
+vector_store/
+embeddings/
+*.sqlite3
+
+# Eval outputs
+eval/results/
+eval/outputs/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Logs
+*.log
