@@ -17,6 +17,9 @@ Tämä repo (coaching-rag-assistant) on työn käytännön osuus: toimiva RAG-ch
 - Kommentoi koodi suomeksi tai englanniksi lyhyesti, mutta älä liikaa.
 - Pidä scope pieni. Aikaa on rajallisesti (n. 8–14 h koodaukseen), joten MVP ensin.
 - Kerro suoraan, jos jokin valinta on huono tai jos jokin on tehtävä toisin.
+- Lue `docs/tyoloki.md` istunnon alussa, niin tiedät missä mennään. Pidä se ajan tasalla
+  jokaisen valmistuneen askeleen jälkeen: mitä tehtiin, komennot, perustelut ja testitulokset.
+  Se on tekninen loki, ei raporttitekstiä. Tiedosto on `.gitignore`ssa, eikä sitä commitoida.
 
 ## Arkkitehtuuri (korkea taso)
 Asiakas (selain) ⇄ Frontend ⇄ Backend → (Upotus-API, Vektorikanta, Kielimalli-API)
