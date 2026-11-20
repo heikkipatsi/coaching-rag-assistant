@@ -1,0 +1,23 @@
+# Paikallinen vektoritietokanta (PostgreSQL + pgvector).
+# Arvot luetaan repon juuren .env-tiedostosta (ks. .env.example).
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-coaching}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Aseta POSTGRES_PASSWORD .env-tiedostoon}
+      POSTGRES_DB: ${POSTGRES_DB:-coaching}
+    ports:
+      # Vain omalle koneelle, ei verkkoon
+      - "127.0.0.1:${DB_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-coaching} -d ${POSTGRES_DB:-coaching}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
