@@ -17,7 +17,7 @@ function cosine(a: number[], b: number[]): number {
 
 const question = "Voinko lopettaa valmennuksen kesken kuukauden?";
 const docs = [
-  "Valmennusjäsenyyden voi peruuttaa milloin tahansa, ja peruutus astuu voimaan laskutuskauden lopussa.",
+  "Valmennusjäsenyyden voi lopettaa milloin tahansa, ja peruutus astuu voimaan laskutuskauden lopussa.",
   "Kissa nukkuu sohvalla ja katselee ikkunasta lintuja.",
 ];
 
