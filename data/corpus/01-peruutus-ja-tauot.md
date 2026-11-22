@@ -19,4 +19,4 @@ Asiakas voi pitää jäsenyydessään tauon, jos syynä on sairaus, loukkaantumi
 
 ## Paluu tauon jälkeen
 
-Tauon jälkeen valmentaja tarkistaa ohjelman ja päivittää sen vastaamaan asiakkaan nykytilannetta. Ensimmäinen viikko tauon jälkeen on kevyempi sovitun palautumisjakson takia.
+Tauon jälkeen valmentaja tarkistaa ohjelman ja päivittää sen vastaamaan asiakkaan nykytilannetta. Ensimmäinen viikko tauon jälkeen on kevyempi sovitun palautumisjakson takia, mikäli asiakkaalla on ollut taukoa treeneistä.
