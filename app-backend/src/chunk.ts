@@ -12,7 +12,8 @@ export interface Chunk {
   text: string; // upotettava teksti (alussa otsikkoliite)
 }
 
-// Yläraja osion koolle merkkeinä (noin 300-400 tokenia); pidempi osio jaetaan kappaleittain
+// Yläraja osion koolle merkkeinä (noin 460 tokenia, mitattu voyage-4:llä: ~2,6 merkkiä/token suomessa);
+// pidempi osio jaetaan kappaleittain
 const MAX_CHARS = 1200;
 
 // Erottaa tiedoston alun front matterin (--- ... ---) ja varsinaisen tekstin
