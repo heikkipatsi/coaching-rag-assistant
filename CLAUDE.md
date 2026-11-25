@@ -26,7 +26,7 @@ Asiakas (selain) ⇄ Frontend ⇄ Backend → (Upotus-API, Vektorikanta, Kielima
 
 - Frontend: Vite + React + TypeScript
 - Backend: Node.js + Express (TypeScript, tsx)
-- Vektorikanta: PostgreSQL + pgvector (varalla Qdrant)
+- Vektorikanta: PostgreSQL + pgvector (Docker, `docker-compose.yml`); Qdrant jäi varavaihtoehdoksi
 - Kielimalli: Claude (Anthropic API). Mallin nimi tulee ympäristömuuttujasta, ei kovakoodattuna.
 - Upotukset: Anthropicilla ei ole omaa upotusmallia, joten käytetään Voyage AI:ta.
 - API-avaimet vain backendin .env-tiedostossa. Frontend ei koskaan saa avaimia
@@ -43,9 +43,12 @@ Kyselyvaihe (jokaisella kysymyksellä):
 Haku tehdään joka kysymyksellä, ei vain silloin kun malli ei tiedä.
 
 ## Korpus
-Aineisto on kuvitteellisen valmennusyrityksen sisältöä. Vaihtoehdot: oma kirjoitettu
-sisältö, julkiset suositukset (THL, UKK) tai molemmat. **Päätös on vielä tekemättä.**
-Ehdota ja kysy ennen kuin teet mitään.
+Aineisto on kuvitteellisen valmennusyrityksen sisältöä. **Päätös (alustava):** aloitetaan
+pienellä omalla aineistolla (`data/corpus/`, Markdown + front matter, `source_type: oma`).
+Julkisia lähteitä (THL, UKK) voi lisätä myöhemmin samassa muodossa (`source_type: julkinen`).
+Korpus jäädytetään ennen varsinaista evaluointia, koska dokumenttien lisäys muuttaa
+hakutuloksia. Perustelut ja nykyiset dokumentit: `docs/tyoloki.md` kohta 5.
+Korpuksen laajennuksista ehdota ja kysy ennen kuin teet mitään.
 
 ## Evaluointi (myöhemmin)
 Vertailu: L1 = pelkkä kielimalli ilman RAG:ia, L2 = RAG. Metriikat: recall@k (haku),
@@ -61,14 +64,15 @@ app-frontend/  app-backend/  data/  eval/  docs/
   `.env.example` pidetään kunnossa, ja tarkistetaan ettei historiassa ole avaimia.
 
 ## Aikataulu
-Viikko 47 (nyt): repon runko, backend kutsuu Claudea kovakoodatulla kysymyksellä,
-korpuksen päätös, upotukset (Voyage) + pgvector.
-Sen jälkeen: kyselyvaihe, frontend, evaluointi, raportti.
+Valmiina (viikko 47): repon runko, backend, korpuksen alustava päätös ja esimerkkidokumentit,
+upotukset (Voyage), pilkkominen, pgvector, haku ja RAG-vastaus (`POST /api/chat` hakee
+katkelmat ja vastaa niiden perusteella).
+Seuraavaksi: etäisyysraja "ei löydy → ohjaa valmentajalle" (perustellaan evaluointikysymyksillä),
+frontend, evaluointi (`eval/`), raportti.
 
 ## Seuraavat askeleet
-1. Tarkista, mitä repossa jo on, ja ehdota runko (kansiot, .gitignore, .env.example, README).
-2. Alusta backend (Express + TypeScript) ja tee `POST /api/chat`, joka lähettää
-   kovakoodatun kysymyksen Claudelle ja palauttaa vastauksen. Avain .env:stä.
-3. Testataan curlilla. Sitten pieni commit.
-
-Älä tee vielä frontendiä tai vektorikantaa ennen kuin askel 2 toimii.
+Tarkka tilanne ja päätökset ovat `docs/tyoloki.md`:ssä (kohta "Seuraavaksi").
+1. Etäisyysrajan päätös (tarvitaan enemmän kysymyksiä kuin nykyiset 5) ja lähteiden
+   piilotus, kun mikään katkelma ei ole riittävän lähellä.
+2. Frontend (Vite + React + TypeScript), kun backend on vakaa.
+3. Evaluointikysymykset ja L1/L2-vertailu kansioon `eval/`; korpus jäädytetään ennen sitä.
