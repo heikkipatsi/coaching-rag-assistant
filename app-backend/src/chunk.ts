@@ -21,7 +21,7 @@ export function parseFrontMatter(raw: string): {
   meta: Record<string, string>;
   body: string;
 } {
-  // Siivotaan BOM ja Windowsin rivinvaihdot
+  // Siivotaan BOM (U+FEFF) ja Windowsin rivinvaihdot
   const text = raw.replace(/^﻿/, "").replace(/\r\n/g, "\n");
   const match = text.match(/^---\n([\s\S]*?)\n---\n?/);
   if (!match) return { meta: {}, body: text };
